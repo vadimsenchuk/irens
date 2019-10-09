@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700&display=swap');
+
+$primary: #585858;
+$link: #0073ae;
+$white: #fff;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: $primary;
+    position: relative;
+    padding-top: 200px;
+}
+
+.container {
+    max-width: 980px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.card {
+    width: 30%;
+    padding: 15px 25px 25px;
+    border-right: 1px solid #e8e8e8;
+    text-align: center;
+    &:last-of-type {
+        border-right: none;
+    }
+    &__img {
+        display: flex;
+        height: 62px;
+        img {
+            margin: auto;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+    &__title {
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1.25;
+        margin: 30px 0 14px;
+    }
+    &__text {
+        font-size: 0.75rem;
+        line-height: 1.5;
+        min-height: 90px;
+    }
+    &__link {
+        display: block;
+        margin-top: 15px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: $link;
+        text-decoration: none;
+        cursor: pointer;
+    }
+}
+
+.popup {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .7);
+    z-index: 10;
+    &__video{
+        position: relative;
+        margin: auto;
+        width: 640px;
+        height: 320px;
+        background-color: #fff;
+    }
+    &__close {
+        position: absolute;
+        width: 13px;
+        height: 13px;
+        right: 3px;
+        top: -20px;
+        text-decoration: none;
+        &::after, &::before {
+            content: '';
+            width: 18.4px;
+            height: 3px;
+            background-color: $white;
+            position: absolute;
+        }
+        &::after {
+            transform: rotate(-45deg);
+        }
+        &::before {
+            transform: rotate(45deg);
+        }
+        &:hover::after::before {
+            color: darken($color: $white, $amount: 30);
+        }
+    }
+}

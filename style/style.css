@@ -1,0 +1,124 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:400,700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  color: #585858;
+  position: relative;
+  padding-top: 200px;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.card {
+  width: 30%;
+  padding: 15px 25px 25px;
+  border-right: 1px solid #e8e8e8;
+  text-align: center;
+}
+
+.card:last-of-type {
+  border-right: none;
+}
+
+.card__img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 62px;
+}
+
+.card__img img {
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+.card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 30px 0 14px;
+}
+
+.card__text {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  min-height: 90px;
+}
+
+.card__link {
+  display: block;
+  margin-top: 15px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0073ae;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.popup {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 10;
+}
+
+.popup__video {
+  position: relative;
+  margin: auto;
+  width: 640px;
+  height: 320px;
+  background-color: #fff;
+}
+
+.popup__close {
+  position: absolute;
+  width: 13px;
+  height: 13px;
+  right: 3px;
+  top: -20px;
+  text-decoration: none;
+}
+
+.popup__close::after, .popup__close::before {
+  content: '';
+  width: 18.4px;
+  height: 3px;
+  background-color: #fff;
+  position: absolute;
+}
+
+.popup__close::after {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.popup__close::before {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.popup__close:hover::after::before {
+  color: #b3b3b3;
+}
+/*# sourceMappingURL=style.css.map */
