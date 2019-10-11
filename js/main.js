@@ -45,29 +45,31 @@ function showPopup(elem) {
     $popup.classList.add('visible');
     firstScriptTag.parentNode.insertBefore($tag, firstScriptTag);
 
-    hidePopup($popup);
+    hidePopup($popup, elem);
 
     if (document.hasChildNodes($tag)) {
       onYouTubePlayerAPIReady();
-      console.log(getDuration());
     }
   });
 }
 
-function hidePopup(elem) {
+function hidePopup(elem, button) {
   elem.addEventListener('click', ({ target }) => {
     if (target === elem || target.classList.contains('popup__close')) {
       elem.classList.remove('visible');
-      clearVideo();
+      clearVideo(button);
     }
   });
 }
 
 let player;
 function onYouTubePlayerAPIReady() {
+  let width = 640;
+  if (window.screen.width < 640) {
+    width = window.screen.width;
+  }
   player = new YT.Player('player', {
-    height: '360',
-    width: '640',
+    width,
     videoId,
     events: {
       onReady: onPlayerReady,
@@ -80,11 +82,10 @@ function onPlayerReady(event) {
   event.target.playVideo();
 }
 
-let done = false;
 function onPlayerStateChange(event) {
-  if (event.data == YT.PlayerState.PLAYING && !done) {
-    setTimeout(stopVideo, 6000);
-    done = true;
+  // console.log(event);
+  if (event.data == 0) {
+    setTimeout(nextVideo, 10000);
   }
 }
 
@@ -92,11 +93,66 @@ function stopVideo() {
   player.stopVideo();
 }
 
-function clearVideo() {
+function nextVideo() {
+  const playlist = [];
+  const url = player.getVideoUrl().split('=')[1];
+
+  document.querySelectorAll('.card__link').forEach(el => {
+    playlist.push(el.getAttribute('data-video').split('=')[1]);
+  });
+
+  let currentVideo = playlist.indexOf(url);
+  const nextVideo = playlist.slice(++currentVideo, ++currentVideo).toString();
+
+  player.cueVideoById(nextVideo, 0);
+  player.nextVideo();
+  player.playVideo();
+}
+
+function clearVideo(elem) {
   player.destroy();
+  const duration = player.getDuration();
+  const time = player.getCurrentTime();
+  let res = (time / duration) * 100;
+  if (res < 25) {
+    res = 0;
+  } else if (res < 50) {
+    res = 25;
+  } else if (res < 75) {
+    res = 50;
+  } else if (res < 100) {
+    res = 75;
+  } else {
+    res = 100;
+  }
+  const title = elem.parentElement.querySelector('.card__title').textContent;
+  const id = elem.getAttribute('data-video').split('=')[1];
+  console.log(title + ' - ' + id + ' - ' + res + '%');
 }
 
 function getDuration() {
   const duration = player.getDuration();
   return duration;
 }
+
+function getCurrnetTime() {
+  const time = player.getCurrentTime();
+  return time;
+}
+
+$(() => {
+  if (window.screen.width <= 768) {
+    $('.container').slick({
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            dots: true,
+            slideToShow: 1,
+            slideToScroll: 1
+          }
+        }
+      ]
+    });
+  }
+});

@@ -138,4 +138,13 @@ body {
 .popup__close:hover::after::before {
   color: #b3b3b3;
 }
+
+@media only screen and (max-width: 768px) {
+  .container {
+    max-width: 100%;
+  }
+  .card {
+    border-right: none;
+  }
+}
 /*# sourceMappingURL=style.css.map */
