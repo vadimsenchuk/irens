@@ -142,6 +142,7 @@ body {
 @media only screen and (max-width: 768px) {
   .card {
     border-right: none;
+    width: 80%;
   }
 }
 

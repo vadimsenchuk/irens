@@ -114,10 +114,12 @@ body {
 
 @media only screen and (max-width: 768px) {
   // .container {
-  //   max-width: 100%;
+  //   width: calc(100% * 4);
+  //   overflow: hidden;
   // }
   .card {
     border-right: none;
+    width: 80%;
   }
 }
 @media (max-width: 640px) {

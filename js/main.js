@@ -134,9 +134,13 @@ function clearVideo(elem) {
 }
 
 $(() => {
-  if (window.screen.width <= 768) {
-    $('.container').slick();
-  }
+  setTimeout(() => {
+    if (window.screen.width <= 768) {
+      $('.container').slick({
+        dots: true
+      });
+    }
+  }, 100);
   if (window.screen.width < 640) {
     $('iframe').attr('width', '100%');
   }
