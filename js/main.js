@@ -95,15 +95,18 @@ function stopVideo() {
 
 function nextVideo() {
   const playlist = [];
-  const url = player.getVideoUrl().split('=')[1];
+  const url = player.getVideoUrl().split('=')[2];
 
   document.querySelectorAll('.card__link').forEach(el => {
     playlist.push(el.getAttribute('data-video').split('=')[1]);
   });
 
   let currentVideo = playlist.indexOf(url);
+  if (currentVideo == playlist.length - 1) {
+    currentVideo = -1;
+  }
   const nextVideo = playlist.slice(++currentVideo, ++currentVideo).toString();
-
+  console.log(playlist, url);
   player.cueVideoById(nextVideo, 0);
   player.nextVideo();
   player.playVideo();
