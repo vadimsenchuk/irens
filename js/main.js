@@ -134,4 +134,7 @@ $(() => {
   if (window.screen.width <= 768) {
     $('.container').slick();
   }
+  if (window.screen.width < 640) {
+    $('iframe').attr('width', '100%');
+  }
 });
