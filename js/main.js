@@ -44,7 +44,9 @@ function showPopup(elem) {
     videoId = elem.getAttribute('data-video').split('=')[1];
     $popup.classList.add('visible');
     firstScriptTag.parentNode.insertBefore($tag, firstScriptTag);
+
     hidePopup($popup);
+
     if (document.hasChildNodes($tag)) {
       onYouTubePlayerAPIReady();
       console.log(getDuration());
