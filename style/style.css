@@ -147,4 +147,10 @@ body {
     border-right: none;
   }
 }
+
+@media (max-width: 640px) {
+  .popup__video {
+    width: 100%;
+  }
+}
 /*# sourceMappingURL=style.css.map */

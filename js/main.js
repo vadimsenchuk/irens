@@ -126,18 +126,8 @@ function clearVideo(elem) {
     res = 100;
   }
   const title = elem.parentElement.querySelector('.card__title').textContent;
-  const id = elem.getAttribute('data-video').split('=')[1];
+  const id = player.getVideoUrl().split('=')[1];
   console.log(title + ' - ' + id + ' - ' + res + '%');
-}
-
-function getDuration() {
-  const duration = player.getDuration();
-  return duration;
-}
-
-function getCurrnetTime() {
-  const time = player.getCurrentTime();
-  return time;
 }
 
 $(() => {
