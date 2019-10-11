@@ -142,17 +142,6 @@ function getCurrnetTime() {
 
 $(() => {
   if (window.screen.width <= 768) {
-    $('.container').slick({
-      responsive: [
-        {
-          breakpoint: 768,
-          settings: {
-            dots: true,
-            slideToShow: 1,
-            slideToScroll: 1
-          }
-        }
-      ]
-    });
+    $('.container').slick();
   }
 });
