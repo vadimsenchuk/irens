@@ -113,10 +113,9 @@ body {
 }
 
 @media only screen and (max-width: 768px) {
-  // .container {
-  //   width: calc(100% * 4);
-  //   overflow: hidden;
-  // }
+  body {
+    padding-top: 50px;
+  }
   .card {
     border-right: none;
     width: 80%;
